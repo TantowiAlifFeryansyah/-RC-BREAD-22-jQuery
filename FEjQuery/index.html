@@ -26,9 +26,7 @@
         <div class="card-body">
           <form id="user-search">
             <div class="row mb-3">
-              <label for="idcheck" class="col-sm-2 col-form-label">
-                <input type="checkbox" name="idcheck" id="idcheck" /> ID
-              </label>
+              <label for="idcheck" class="col-sm-2 col-form-label"> ID </label>
               <div class="col-sm-10">
                 <input
                   type="text"
@@ -41,10 +39,7 @@
             </div>
 
             <div class="row mb-3">
-              <label for="stringcheck" class="col-sm-2 col-form-label">
-                <input type="checkbox" name="stringcheck" id="stringcheck" />
-                String
-              </label>
+              <label for="stringcheck" class="col-sm-2 col-form-label"> String </label>
               <div class="col-sm-10">
                 <input
                   type="text"
@@ -57,10 +52,7 @@
             </div>
 
             <div class="row mb-3">
-              <label for="integercheck" class="col-sm-2 col-form-label">
-                <input type="checkbox" name="integercheck" id="integercheck" />
-                Integer
-              </label>
+              <label for="integercheck" class="col-sm-2 col-form-label"> Integer </label>
               <div class="col-sm-10">
                 <input
                   type="text"
@@ -73,10 +65,7 @@
             </div>
 
             <div class="row mb-3">
-              <label for="floatcheck" class="col-sm-2 col-form-label">
-                <input type="checkbox" name="floatcheck" id="floatcheck" />
-                Float
-              </label>
+              <label for="floatcheck" class="col-sm-2 col-form-label"> Float </label>
               <div class="col-sm-10">
                 <input
                   type="text"
@@ -89,9 +78,7 @@
             </div>
 
             <div class="row mb-3">
-              <label for="datecheck" class="col-sm-2 col-form-label">
-                <input type="checkbox" name="datecheck" id="datecheck" /> Date
-              </label>
+              <label for="datecheck" class="col-sm-2 col-form-label"> Date </label>
               <div class="col-sm-3">
                 <input
                   type="date"
@@ -110,15 +97,10 @@
             </div>
 
             <div class="row mb-3">
-              <label for="booleancheck" class="col-sm-2 col-form-label">
-                <input type="checkbox" name="booleancheck" id="booleancheck" />
-                Boolean
-              </label>
+              <label for="booleancheck" class="col-sm-2 col-form-label"> Boolean </label>
               <div class="col-sm-10">
                 <select name="boolean" class="form-select" id="boolean">
-                  <option value="" selected disabled>
-                    Choose the boolean ...
-                  </option>
+                  <option value="">Choose the boolean ...</option>
                   <option value="true">True</option>
                   <option value="false">False</option>
                 </select>
@@ -126,11 +108,9 @@
             </div>
 
             <button type="submit" class="btn btn-primary">
-              <i class="fa-solid fa-magnifying-glass"></i> Search
-            </button>
-            <a href="/" class="btn btn-warning">
-              <i class="fa-solid fa-window-restore"></i> Reset</a
-            >
+              <i class="fa-solid fa-magnifying-glass"></i> Search </button>
+              <a href="/" class="btn btn-warning">
+              <i class="fa-solid fa-window-restore"></i> Reset </a>
           </form>
         </div>
 
@@ -138,7 +118,7 @@
           <form id="user-form">
             <input type="hidden" id="idPost" value="" />
             <div class="row mb-3">
-              <label for="string" class="col-sm-2 col-form-label">String</label>
+              <label for="string" class="col-sm-2 col-form-label"> String </label>
               <div class="col-sm-10">
                 <input
                   type="text"
@@ -151,9 +131,7 @@
             </div>
 
             <div class="row mb-3">
-              <label for="integer" class="col-sm-2 col-form-label"
-                >Integer</label
-              >
+              <label for="integer" class="col-sm-2 col-form-label"> Integer </label>
               <div class="col-sm-10">
                 <input
                   type="text"
@@ -166,7 +144,7 @@
             </div>
 
             <div class="row mb-3">
-              <label for="float" class="col-sm-2 col-form-label">Float</label>
+              <label for="float" class="col-sm-2 col-form-label"> Float </label>
               <div class="col-sm-10">
                 <input
                   type="text"
@@ -179,7 +157,7 @@
             </div>
 
             <div class="row mb-3">
-              <label for="date" class="col-sm-2 col-form-label">Date</label>
+              <label for="date" class="col-sm-2 col-form-label"> Date </label>
               <div class="col-sm-3">
                 <input
                   type="date"
@@ -192,20 +170,17 @@
             </div>
 
             <div class="row mb-3">
-              <label for="boolean" class="col-sm-2 col-form-label"
-                >Boolean</label
-              >
+              <label for="boolean" class="col-sm-2 col-form-label">Boolean</label>
               <div class="col-sm-10">
                 <select name="booleanPost" class="form-select" id="booleanPost">
-                  <option selected disabled>Choose the boolean ...</option>
+                  <option value="" selected disabled hidden> Choose the boolean ... </option>
                   <option value="true">True</option>
                   <option value="false">False</option>
                 </select>
               </div>
             </div>
             <button type="submit" class="btn btn-primary">
-              <i class="fa-solid fa-plus"></i> Save
-            </button>
+              <i class="fa-solid fa-plus"></i> Save </button>
           </form>
         </div>
 
@@ -227,7 +202,7 @@
       $(document).ready(function () {
         readData();
 
-        $("user-form").submit(function (event) {
+        $("#user-form").submit(function (event) {
           event.preventDefault();
           const id = $("#idPost").val();
           const string = $("#stringPost").val();
@@ -238,44 +213,58 @@
           saveData(id, string, integer, float, date, boolean);
         });
 
-        $("user-search").submit(function (event) {
+        $("#user-search").submit(function (event) {
           event.preventDefault();
           const page = 1;
-          const string = $("string").val();
-          const stringcheck = $("stringcheck").val();
-          const integer = $("integer").val();
-          const integercheck = $("integercheck").val();
-          const float = $("float").val();
-          const startdate = $("startdate").val();
-          const enddate = $("enddate").val();
-          const datecheck = $("datecheck").val();
-          const floatcheck = $("floatcheck").val();
-          const boolean = $("boolean").val();
-          const booleancheck = $("booleancheck").val();
+          const string = $("#string").val();
+          const integer = $("#integer").val();
+          const float = $("#float").val();
+          const startdate = $("#startdate").val();
+          const enddate = $("#enddate").val();
+          const boolean = $("#boolean").val();
           params = {
             ...params,
             string,
-            stringcheck,
             integer,
-            integercheck,
             float,
-            floatcheck,
             startdate,
             enddate,
-            datecheck,
             boolean,
-            booleancheck,
             page,
           };
           readData(params);
+          console.log("ini bagian ", params);
         });
 
-        $("table tbody").on("click", ".btn-edit", function() {
-        const id = $(this).attr("iddata")
-        alert(id)
-        // editData(id)
-      })
+        // click edit
+        $("table tbody").on("click", ".btn-edit", function () {
+          const id = $(this).attr("iddata");
+          editData(id);
+        });
 
+        // click delete
+        $("table tbody").on("click", ".btn-delete", function () {
+          const id = $(this).attr("iddata");
+          removeData(id);
+        });
+
+        // click previous
+        $("nav ul").on("click", ".btn-previous", function () {
+          const id = $(this).attr("idpage");
+          changePage(id);
+        });
+
+        // click perpage
+        $("nav ul").on("click", ".btn-perpage", function () {
+          const id = $(this).attr("idpage");
+          changePage(id);
+        });
+
+        // click next
+        $("nav ul").on("click", ".btn-next", function () {
+          const id = $(this).attr("idpage");
+          changePage(id);
+        });
       });
 
       var params = {};
@@ -292,59 +281,6 @@
         return false;
       };
 
-      // menampilkan list
-      const readData = (params) => {
-        // diambil dari alamat BEMongoDb
-
-        $.ajax({
-          method: "GET",
-          url: `http://localhost:3000/users?${new URLSearchParams(
-            params
-          ).toString()}`,
-        })
-          .done(function ({
-            data,
-            page,
-            totalPages,
-            offset,
-            sortBy,
-            sortMode,
-          }) {
-            params = { ...params, page, totalPages, offset, sortBy, sortMode };
-            let html = "";
-            data.forEach((item, index) => {
-              html += `
-                      <tr>
-                      <td> ${index + 1 + offset} </td>
-                      <td> ${item.string} </td>
-                      <td> ${item.integer} </td>
-                      <td> ${item.float} </td>
-                      <td> ${moment(item.date).format("DD MMMM YYYY")} </td>
-                      <td> ${item.boolean} </td>
-                      <td>
-                        <button type="button" class="btn btn-success btn-edit" iddata="${
-                          item._id
-                        }">
-                            <i class="fa-solid fa-pen-to-square"></i> Edit
-                            </button>
-                        <button type="button" class="btn btn-danger btn-delete" onclick="removeData('${
-                          item._id
-                        }')">
-                            <i class="fa-solid fa-trash"></i> Delete 
-                            </button>
-                      </td>
-                    </tr>
-                      `;
-            });
-            $("#users-body").html(html);
-            pagination(params);
-            sorting(params);
-          })
-          .fail(function (err) {
-            alert("Data error: " + err);
-          });
-      };
-
       // pagination
       const pagination = (params) => {
         let li = "";
@@ -356,10 +292,9 @@
         if (params.page >= 1) {
           li += `
         <li class="page-item ${params.page == 1 ? "disabled" : ""}">
-            <a class="page-link" href="javascript:void(0)" onclick="changePage(${
-              params.page - 1
-            })">Previous</a>
-        </li>`;
+            <a class="page-link btn-previous" href="javascript:void(0)" idpage="${params.page - 1}">Previous</a>
+        </li>
+        `;
         }
 
         for (let i = beforePages; i <= afterPages; i++) {
@@ -379,22 +314,19 @@
 
           li += `
               <li class="page-item  ${liActive}">
-                <a class="page-link" href="javascript:void(0)" onclick="changePage(${i})">${i}</a>
+                <a class="page-link btn-perpage" href="javascript:void(0)" idpage="${i}">${i}</a>
               </li>
               `;
         }
 
         if (params.page <= params.totalPages) {
           li += `
-        <li class="page-item ${
-          params.page == params.totalPages ? "disabled" : ""
-        }">
-            <a class="page-link" href="javascript:void(0)" onclick="changePage(${
-              params.page + 1
-            })">Next</a>
-        </li>`;
+        <li class="page-item ${params.page == params.totalPages ? "disabled" : ""}">
+            <a class="page-link btn-next" href="javascript:void(0)" idpage="${params.page + 1}">Next</a>
+        </li>
+        `;
         }
-        document.getElementById("userPagination").innerHTML = li;
+        $("#userPagination").html(li);
       };
 
       // sorting
@@ -405,89 +337,97 @@
         <tr>
         <th> ID </hr>
         <th>
-            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('string','${
-              params.sortMode == "asc"
-                ? (sortMode = "desc")
-                : (sortMode = "asc")
-            }')">
-               String &nbsp;<i class="fa-solid fa-${
-                 params.sortBy == "string"
-                   ? params.sortMode == "asc"
-                     ? "sort-up"
-                     : "sort-down"
-                   : "sort"
-               }"></i>
+            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('string',
+            '${params.sortMode == "asc" ? (sortMode = "desc") : (sortMode = "asc")}')">
+               String &nbsp;<i class="fa-solid fa-${params.sortBy == "string" ? params.sortMode == "asc" ? "sort-up" 
+               : "sort-down" : "sort"}"></i>
             </a> 
           </th>
 
         <th>  
-            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('integer','${
-              params.sortMode == "asc"
-                ? (sortMode = "desc")
-                : (sortMode = "asc")
-            }')">
-               Integer &nbsp;<i class="fa-solid fa-${
-                 params.sortBy == "integer"
-                   ? params.sortMode == "asc"
-                     ? "sort-up"
-                     : "sort-down"
-                   : "sort"
-               }"></i>
+            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('integer',
+            '${params.sortMode == "asc" ? (sortMode = "desc") : (sortMode = "asc")}')">
+               Integer &nbsp;<i class="fa-solid fa-${params.sortBy == "integer" ? params.sortMode == "asc" ? "sort-up" 
+               : "sort-down"
+               : "sort"}"></i>
             </a> 
             </th>
 
         <th>  
-            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('float','${
-              params.sortMode == "asc"
-                ? (sortMode = "desc")
-                : (sortMode = "asc")
-            }')">
-               Float &nbsp;<i class="fa-solid fa-${
-                 params.sortBy == "float"
-                   ? params.sortMode == "asc"
-                     ? "sort-up"
-                     : "sort-down"
-                   : "sort"
-               }"></i>
+            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('float',
+            '${params.sortMode == "asc" ? (sortMode = "desc") : (sortMode = "asc")}')">
+              Float &nbsp;<i class="fa-solid fa-${params.sortBy == "float" ? params.sortMode == "asc" ? "sort-up" 
+              : "sort-down" : "sort"}"></i>
             </a> 
           </th>
 
         <th>  
-            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('date','${
-              params.sortMode == "asc"
-                ? (sortMode = "desc")
-                : (sortMode = "asc")
-            }')">
-               Date &nbsp;<i class="fa-solid fa-${
-                 params.sortBy == "date"
-                   ? params.sortMode == "asc"
-                     ? "sort-up"
-                     : "sort-down"
-                   : "sort"
-               }"></i>
+            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('date',
+            '${params.sortMode == "asc" ? (sortMode = "desc") : (sortMode = "asc")}')">
+               Date &nbsp;<i class="fa-solid fa-${params.sortBy == "date" ? params.sortMode == "asc" ? "sort-up"
+                : "sort-down" : "sort"}"></i>
             </a> 
           </th>
 
           <th>  
-            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('boolean','${
-              params.sortMode == "asc"
-                ? (sortMode = "desc")
-                : (sortMode = "asc")
-            }')">
-               Boolean &nbsp;<i class="fa-solid fa-${
-                 params.sortBy == "date"
-                   ? params.sortMode == "asc"
-                     ? "sort-up"
-                     : "sort-down"
-                   : "sort"
-               }"></i>
+            <a style="text-decoration: none; color: #000;" href="javascript:void(0)" onclick="changeSort('boolean',
+            '${params.sortMode == "asc" ? (sortMode = "desc") : (sortMode = "asc")}')">
+               Boolean &nbsp;<i class="fa-solid fa-${params.sortBy == "date" ? params.sortMode == "asc" ? "sort-up" 
+               : "sort-down" : "sort"}"></i>
             </a> 
           </th>
 
           <th> Action </hr>
         </tr>`;
 
-        document.getElementById("users-sort").innerHTML = tr;
+        $("#users-sort").html(tr);
+      };
+
+      // menampilkan list
+      const readData = (params) => {
+        // diambil dari alamat BEMongoDb
+        $.ajax({
+          method: "GET",
+          url: `http://localhost:3000/users?${new URLSearchParams(params).toString()}`})
+          .done(function ({
+            data,
+            page,
+            totalPages,
+            offset,
+            sortBy,
+            sortMode,
+          }) {params = { ...params, page, totalPages, sortBy, sortMode };
+            let html = "";
+            data.forEach((item, index) => {
+              html += `
+                      <tr>
+                      <td> ${index + 1 + offset} </td>
+                      <td> ${item.string} </td>
+                      <td> ${item.integer} </td>
+                      <td> ${item.float} </td>
+                      <td> ${moment(item.date).format("DD MMMM YYYY")} </td>
+                      <td> ${item.boolean} </td>
+                      <td>
+                        <button type="button" class="btn btn-success btn-edit" iddata="${
+                          item._id
+                        }">
+                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                            </button>
+                        <button type="button" class="btn btn-danger btn-delete" iddata="${
+                          item._id
+                        }">
+                            <i class="fa-solid fa-trash"></i> Delete 
+                            </button>
+                      </td>
+                    </tr>
+                      `;
+            });
+            $("#users-body").html(html);
+            pagination(params);
+            sorting(params);
+          }).fail(function (err) {
+            alert("Data error: " + err);
+          });
       };
 
       // Menampilkan data yang mau di EDIT ke list / form
@@ -497,20 +437,24 @@
           url: `http://localhost:3000/users/${id}`,
         })
           .done(function (data) {
+            console.log(data);
             $("#idPost").val(data._id);
             $("#stringPost").val(data.string);
             $("#integerPost").val(data.integer);
             $("#floatPost").val(data.float);
             $("#datePost").val(moment(data.date).format("YYYY-MM-DD"));
-            $("#booleanPost").val(data.boolean);
-          })
-          .fail(function (err) {
+            $(`#booleanPost option[value=${data.boolean}]`).prop(
+              "selected",
+              true
+            );
+            $("#booleanPost option:selected").text(data.boolean);
+          }).fail(function (err) {
             alert("Data error: " + err);
           });
       };
 
-      // Add & Edit
       const saveData = (id, string, integer, float, date, boolean) => {
+        console.log(id, string, integer, float, date, boolean);
         let url = `http://localhost:3000/users`;
         let method = `POST`;
         if (id) {
@@ -520,18 +464,18 @@
         $.ajax({
           method,
           url,
-          data: { string, integer, float, date, boolean }
-        })
-          .done(function (data) {
+          data: { string, integer, float, date, boolean },
+        }).done(function (data) {
             $("#idPost").val("");
             $("#stringPost").val("");
             $("#integerPost").val("");
             $("#floatPost").val("");
             $("#datePost").val("");
-            $("#booleanPost").val("");
+            $("#booleanPost option:selected").text("choose the boolean..");
+            // $("#booleanPost option:selected").text("");
+            // $("#user-form").trigger('reset')
             readData();
-          })
-          .fail(function (err) {
+          }).fail(function (err) {
             alert("Data error: " + err);
           });
       };
@@ -545,8 +489,7 @@
           })
             .done(function (data) {
               readData();
-            })
-            .fail(function (err) {
+            }).fail(function (err) {
               alert("Data error: " + err);
             });
         }

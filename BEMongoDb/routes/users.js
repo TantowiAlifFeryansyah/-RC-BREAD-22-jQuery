@@ -8,37 +8,32 @@ module.exports = function (db) {
 
   router.get('/', async function (req, res, next) {
     try {
-// SEARCHING
+      // SEARCHING
       const wheres = {}
 
-      if (req.query.string && req.query.stringcheck) {
+      if (req.query.string) {
         wheres['string'] = new RegExp(`${req.query.string}`, 'i')
       }
 
-      if (req.query.integer && req.query.integercheck) {
+      if (req.query.integer) {
         wheres['integer'] = parseInt(`${req.query.integer}`)
       }
 
-      if (req.query.float && req.query.floatcheck) {
+      if (req.query.float) {
         wheres['float'] = parseFloat(`${req.query.float}`)
       }
 
-      if (req.query.datecheck) {
-        if (req.query.startdate != '' && req.query.enddate != '') {
-          wheres['date'] = {
-            $gte: new Date(`${req.query.startdate}`), 
-            $lte: new Date(`${req.query.enddate}`)
-          }
-        } else if (req.query.startdate != '') {
-          wheres['date'] = { $gte: new Date(`${req.query.startdate}`) };
-        } else if (req.query.enddate != '') {
-          wheres['date'] = { $lte: new Date(`${req.query.enddate}`) };
-        }
+      if (req.query.startdate != '') {
+        wheres['date'] = { $gte: new Date(`${req.query.startdate}`) };
+      } else if (req.query.enddate != '') {
+        wheres['date'] = { $lte: new Date(`${req.query.enddate}`) };
       }
 
-      if (req.query.boolean && req.query.booleancheck) {
+
+      if (req.query.boolean) {
         wheres['boolean'] = JSON.parse(`${req.query.boolean}`)
       }
+
       const page = req.query.page || 1;
       const limit = 3;
       const offset = (parseInt(page) - 1) * limit
@@ -50,8 +45,10 @@ module.exports = function (db) {
       var total = result.length
       const totalPages = Math.ceil(total / limit)
 
-     const users = await User.find(wheres).skip(offset).limit(limit).sort({[sortBy]: sortMode}).toArray()
-      res.json({data: users, page: parseInt(page), totalPages: parseInt(totalPages), offset,  sortBy: sortBy, sortMode: sortMode})
+      console.log(wheres);
+
+      const users = await User.find(wheres).skip(offset).limit(limit).sort({ [sortBy]: sortMode }).toArray()
+      res.json({ data: users, page: parseInt(page), totalPages: parseInt(totalPages), offset, sortBy: sortBy, sortMode: sortMode })
     } catch (err) {
       res.json({ err })
     }
@@ -77,7 +74,7 @@ module.exports = function (db) {
   // Router EDIT
   router.get('/:id', async function (req, res, next) {
     try {
-      const user = await User.findOne({_id: ObjectId(req.params.id)})
+      const user = await User.findOne({ _id: ObjectId(req.params.id) })
       res.json(user)
     } catch (err) {
       res.json({ err })
@@ -106,17 +103,17 @@ module.exports = function (db) {
     }
   });
 
-    // DELETE
-    router.delete('/:id', async function (req, res, next) {
-      try {
-        const result = await User.findOneAndDelete({
-          _id: ObjectId(req.params.id)
-        })
-        res.json(result.value)
-      } catch (err) {
-        res.json({ err })
-      }
-    });
+  // DELETE
+  router.delete('/:id', async function (req, res, next) {
+    try {
+      const result = await User.findOneAndDelete({
+        _id: ObjectId(req.params.id)
+      })
+      res.json(result.value)
+    } catch (err) {
+      res.json({ err })
+    }
+  });
 
   return router;
 }
